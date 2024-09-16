@@ -1,0 +1,5 @@
+#Virtual environment
+.venv
+
+#Image taggind model
+yolov3.pt

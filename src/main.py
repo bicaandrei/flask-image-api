@@ -1,0 +1,9 @@
+import warnings
+from app import create_app
+
+warnings.filterwarnings("ignore", category=FutureWarning)
+app = create_app()
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
