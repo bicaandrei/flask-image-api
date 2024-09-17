@@ -1,18 +1,20 @@
 import os
 
-IMAGE_UPLOAD_FOLDER = '../src/images/untagged'
+IMAGE_UPLOAD_FOLDER = 'images/untagged'
 
 def save_image(image):
     
-    if not os.path.exists(IMAGE_UPLOAD_FOLDER):
-        os.makedirs(IMAGE_UPLOAD_FOLDER)
-
+    EXECUTION_PATH = os.getcwd()
+    
+    untagged_image_path = os.path.join(EXECUTION_PATH, IMAGE_UPLOAD_FOLDER)
+    
+    if not os.path.exists(untagged_image_path):
+        os.makedirs(untagged_image_path)
+    
     filename = image.filename
-    image_path = os.path.join(IMAGE_UPLOAD_FOLDER, filename)
-
+    image_path = os.path.join(untagged_image_path, filename)
+    
     if os.path.exists(image_path):
         return
-
-    filename = image.filename
-    image_path = os.path.join(IMAGE_UPLOAD_FOLDER, filename)
+    
     image.save(image_path)
