@@ -4,7 +4,7 @@ from services.imageTaggingService import get_image_tags
 
 image_tagging_controller_blueprint = Blueprint('image', __name__)
 
-@image_tagging_controller_blueprint.route('/images/', methods =["GET"])
+@image_tagging_controller_blueprint.route('/images/', methods =["POST"])
 def tag_image():
 
     if 'image' not in request.files:
@@ -18,7 +18,7 @@ def tag_image():
         if tags:
             return jsonify({"message": "Image tagged successfully", "tags": list(tags)}), 200 
         else:
-            return jsonify({"error": "Image couldn't be tagged!" }), 500
+            return jsonify({"error": "Image could not be tagged!" }), 500
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
